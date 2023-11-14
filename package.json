@@ -1,0 +1,21 @@
+{
+    "name": "teispam-helper",
+    "license": "MIT",
+    "version": "0.0.0",
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "run": "tsc && dotenv node ./dist/index.js",
+        "build": "tsc"
+    },
+    "dependencies": {
+        "@mtcute/crypto-node": "^0.1.1",
+        "@mtcute/dispatcher": "^0.1.1",
+        "@mtcute/node": "^0.1.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.9.0",
+        "dotenv-cli": "^7.3.0",
+        "typescript": "^5.2.2"
+    }
+}
