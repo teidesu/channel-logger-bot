@@ -6,39 +6,39 @@ settings:
 
 dependencies:
   '@mtcute/crypto-node':
-    specifier: ^0.1.1
-    version: 0.1.1
+    specifier: ^0.1.2
+    version: 0.1.2
   '@mtcute/dispatcher':
-    specifier: ^0.1.1
-    version: 0.1.1
+    specifier: ^0.1.2
+    version: 0.1.2
   '@mtcute/node':
     specifier: ^0.1.1
     version: 0.1.1
 
 devDependencies:
   '@types/node':
-    specifier: ^20.9.0
-    version: 20.9.0
+    specifier: ^20.9.4
+    version: 20.9.4
   dotenv-cli:
     specifier: ^7.3.0
     version: 7.3.0
   typescript:
-    specifier: ^5.2.2
-    version: 5.2.2
+    specifier: ^5.3.2
+    version: 5.3.2
 
 packages:
 
-  /@mtcute/client@0.1.1:
-    resolution: {integrity: sha512-5NnmuJeHse8qZR/3UyL7tu3N4kVRbBJdT/HdSd3CR8G1keis4z9nBzyhEwqcmIxNCzunh7Yr7e06S2hRcNSYzw==}
+  /@mtcute/client@0.1.3:
+    resolution: {integrity: sha512-nlW9IkqQzNiEtEN0MrW8ELU1OfKQei+DkzQBEyWgeHGssJyVKG2AjUhMhdI+2S94NBuMX5x2sjfwMGk0u9I1uQ==}
     dependencies:
-      '@mtcute/core': 0.1.1
+      '@mtcute/core': 0.1.2
       '@mtcute/file-id': 0.1.1
     dev: false
 
-  /@mtcute/core@0.1.1:
-    resolution: {integrity: sha512-aU3vkgXi+i72o8XeMdz3OBYzmu+d6JqTbORpG+UisAx5vgpixhGgCx4PyalcXr2aNEeyIOL9oE0V6Emdw1O4Sg==}
+  /@mtcute/core@0.1.2:
+    resolution: {integrity: sha512-sVMFYJp3pc4RVh7OcMySra5ij46TlGgdDTpYcdmZaEnuV8zVvhmfmLr6J7jFgarKqQ/lY1NK3v55cJSun1x2gw==}
     dependencies:
-      '@mtcute/tl': 166.0.0
+      '@mtcute/tl': 166.1.0
       '@mtcute/tl-runtime': 0.1.1
       '@mtcute/wasm': 0.1.1
       '@types/events': 3.0.0
@@ -46,24 +46,24 @@ packages:
       long: 5.2.3
     dev: false
 
-  /@mtcute/crypto-node@0.1.1:
-    resolution: {integrity: sha512-zB0F05r4EsJE4qcKTpLif6pJe02yvkq6gjHK/eENw2F1DiyzQELA3HeROr0Or0Of+oxLvcRo0/vSPqi11b16zg==}
+  /@mtcute/crypto-node@0.1.2:
+    resolution: {integrity: sha512-ZydN8tomow0tI82otcau1pQ7m+D44R623StTc8mjU1bASIGjVbf1NFhSGYAZ7em/U1Ji00581rLRcJjxnsIJKQ==}
     requiresBuild: true
     dependencies:
-      '@mtcute/core': 0.1.1
+      '@mtcute/core': 0.1.2
     dev: false
 
-  /@mtcute/dispatcher@0.1.1:
-    resolution: {integrity: sha512-tqOpGkpyzcmWUzfZaE+dH+1/DdL0hsqYK5ydwqnU4V2S6g1elV6Bj+b+Wg06BD2ruu0zyNjdK0NGvM9xsGAxBw==}
+  /@mtcute/dispatcher@0.1.2:
+    resolution: {integrity: sha512-dyNa31JvRNPki6lmvQ81CUWuIrrJwLrHq8o2l0nOMHj1XF0yVXjd1FVf3Sp8T27WEgSURkWC7ilQyICumfu3uA==}
     dependencies:
-      '@mtcute/client': 0.1.1
+      '@mtcute/client': 0.1.3
       events: 3.2.0
     dev: false
 
   /@mtcute/file-id@0.1.1:
     resolution: {integrity: sha512-n9uCQdXT2zZWGnOVcthpXjR4SHlSSGwGrGHYkUaWCxVz3vcQuHGYQeoF2yYAzqzya+LWB+EJIqItPtmyb2ZIaQ==}
     dependencies:
-      '@mtcute/core': 0.1.1
+      '@mtcute/core': 0.1.2
     dev: false
 
   /@mtcute/html-parser@0.1.1:
@@ -82,16 +82,16 @@ packages:
   /@mtcute/node@0.1.1:
     resolution: {integrity: sha512-od1i9ysbGlEDM3DhKBU6CYgQR/Uw2wVrr7W8nahYJ0MtvobBkVoU6Ox/jtrdsyqz+t/QDhKZr693TDPuqh05Lg==}
     dependencies:
-      '@mtcute/client': 0.1.1
+      '@mtcute/client': 0.1.3
       '@mtcute/html-parser': 0.1.1
       '@mtcute/markdown-parser': 0.1.1
-      '@mtcute/sqlite': 0.1.1
+      '@mtcute/sqlite': 0.1.2
     dev: false
 
-  /@mtcute/sqlite@0.1.1:
-    resolution: {integrity: sha512-Xpm6mP3fBmocoxSrNpfDdo6puwkwZ/ZbqkdhwRCK2Fox+CZ6ElvogF7h0jaULs8b4onBSaO+W0a4In7xTGAWjQ==}
+  /@mtcute/sqlite@0.1.2:
+    resolution: {integrity: sha512-LVJo3fPlAsySZO7RI6gMJF2lmlVq0pbWBdaDhkuPXr2rAyYYB+ZdjOwZZiQaDeVJ4uqUM9IxtbtnqzHEaMpVEQ==}
     dependencies:
-      '@mtcute/core': 0.1.1
+      '@mtcute/core': 0.1.2
       '@mtcute/tl-runtime': 0.1.1
       better-sqlite3: 8.4.0
     dev: false
@@ -102,8 +102,8 @@ packages:
       long: 5.2.3
     dev: false
 
-  /@mtcute/tl@166.0.0:
-    resolution: {integrity: sha512-iIhEQaRra+jln23nE176WndU963vWZLBpeky8CyJhZX1WTg+HfAWaTlHyRPZfDLX2X+OY9X29VLUCYllANOPIw==}
+  /@mtcute/tl@166.1.0:
+    resolution: {integrity: sha512-tO3IDW8bUwPGE6sGkLiO2fOXR+uCqCgHyi30/Yx1SLPAVG3adHRPL5sW6uHqk9ye8Z6MiYMedUCfafD6Q+CTSQ==}
     dependencies:
       long: 5.2.3
     dev: false
@@ -116,8 +116,8 @@ packages:
     resolution: {integrity: sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==}
     dev: false
 
-  /@types/node@20.9.0:
-    resolution: {integrity: sha512-nekiGu2NDb1BcVofVcEKMIwzlx4NjHlcjhoxxKBNLtz15Y1z7MYf549DFvkHSId02Ax6kGwWntIBPC3l/JZcmw==}
+  /@types/node@20.9.4:
+    resolution: {integrity: sha512-wmyg8HUhcn6ACjsn8oKYjkN/zUzQeNtMy44weTJSM6p4MMzEOuKbA3OjJ267uPCOW7Xex9dyrNTful8XTQYoDA==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -452,8 +452,8 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /typescript@5.2.2:
-    resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
+  /typescript@5.3.2:
+    resolution: {integrity: sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
