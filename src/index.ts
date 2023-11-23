@@ -2,6 +2,7 @@ import { CallbackDataBuilder, Dispatcher, filters } from '@mtcute/dispatcher'
 import { BotKeyboard, NodeTelegramClient, html } from '@mtcute/node'
 
 import * as env from './env.js'
+import { shouldAutomaticallyBan } from './antispam.js'
 
 const tg = new NodeTelegramClient({
     apiId: env.API_ID,
@@ -16,6 +17,7 @@ dp.onNewMessage(filters.start, async (msg) => {
 })
 
 const BanCallback = new CallbackDataBuilder('ban', 'id')
+const UnbanCallback = new CallbackDataBuilder('unban', 'id')
 
 dp.onChatMemberUpdate(
     filters.and(
@@ -23,9 +25,27 @@ dp.onChatMemberUpdate(
         filters.chatMember('joined')
     ),
     async (update) => {
+        const decision = shouldAutomaticallyBan(update.user)
+
+        if (decision.ban) {
+            await tg.banChatMember({ chatId: env.CHANNEL_ID, participantId: update.user.id })
+            await tg.sendText(
+                env.ADMIN_ID,
+                html`Banned ${update.user.mention()} (ID <code>${update.user.id}</code>). Reason - ${decision.reason}`,
+                {
+                    replyMarkup: BotKeyboard.inline([
+                        [BotKeyboard.callback('Unban', UnbanCallback.build({ id: String(update.user.id) }))]
+                    ]),
+                    silent: true,
+                }
+            )
+
+            return
+        }
+
         await tg.sendText(
             env.ADMIN_ID,
-            html`New user joined: ${update.user.mention()}`,
+            html`New user joined: ${update.user.mention()} (ID <code>${update.user.id}</code>)`,
             {
                 replyMarkup: BotKeyboard.inline([
                     [BotKeyboard.callback('Ban', BanCallback.build({ id: String(update.user.id) }))]
@@ -48,9 +68,48 @@ dp.onChatMemberUpdate(
     }
 )
 
-dp.onCallbackQuery(BanCallback.filter({}), async (query) => {
+dp.onCallbackQuery(BanCallback.filter(), async (query) => {
     await tg.banChatMember({ chatId: env.CHANNEL_ID, participantId: parseInt(query.match.id) })
     await query.answer({ text: 'Banned!' })
+    
+    // todo: replace with query.editMessageWith once 0.2.0 is released
+    const msg = await query.getMessage()
+
+    // todo: replace with msg.textWithEntities once 0.2.0 is released
+    const msgTextWithEntities = {
+        text: msg.text,
+        entities: (msg.raw as any).entities
+    }
+    await query.client.editMessage({
+        message: msg, 
+        text: html`
+            ${msgTextWithEntities}
+            <br /><br/>
+            Banned!
+        `,
+    })
+})
+
+dp.onCallbackQuery(UnbanCallback.filter(), async (query) => {
+    await tg.unbanChatMember({ chatId: env.CHANNEL_ID, participantId: parseInt(query.match.id) })
+    await query.answer({ text: 'Banned!' })
+    
+    // todo: replace with query.editMessageWith once 0.2.0 is released
+    const msg = await query.getMessage()
+
+    // todo: replace with msg.textWithEntities once 0.2.0 is released
+    const msgTextWithEntities = {
+        text: msg.text,
+        entities: (msg.raw as any).entities
+    }
+    await query.client.editMessage({
+        message: msg, 
+        text: html`
+            ${msgTextWithEntities}
+            <br /><br/>
+            Unbanned!
+        `,
+    })
 })
 
 tg.run(

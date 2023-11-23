@@ -11,11 +11,14 @@
     "dependencies": {
         "@mtcute/crypto-node": "^0.1.2",
         "@mtcute/dispatcher": "^0.1.2",
-        "@mtcute/node": "^0.1.1"
+        "@mtcute/node": "^0.1.1",
+        "emoji-regex": "^10.3.0"
     },
     "devDependencies": {
+        "@mtcute/test": "^0.1.2",
         "@types/node": "^20.9.4",
         "dotenv-cli": "^7.3.0",
-        "typescript": "^5.3.2"
+        "typescript": "^5.3.2",
+        "vitest": "^0.34.6"
     }
 }
