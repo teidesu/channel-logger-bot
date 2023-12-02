@@ -48,7 +48,8 @@ const BANNED_WORDS = [
     'Ankush',
     'Rajnat',
     'Sarfaraj',
-]
+    'Rakesh'
+].map(x => x.toLowerCase())
 
 export function shouldAutomaticallyBan(user: User) {
     const { firstName, lastName } = user
@@ -66,7 +67,7 @@ export function shouldAutomaticallyBan(user: User) {
     }
 
     for (const word of BANNED_WORDS) {
-        if (firstName.includes(word) || lastName?.includes(word)) {
+        if (firstName.toLowerCase().includes(word) || lastName?.toLowerCase().includes(word)) {
             return { ban: true, reason: `word: ${word}` }
         }
     }

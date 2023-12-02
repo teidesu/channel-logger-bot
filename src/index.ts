@@ -72,44 +72,26 @@ dp.onCallbackQuery(BanCallback.filter(), async (query) => {
     await tg.banChatMember({ chatId: env.CHANNEL_ID, participantId: parseInt(query.match.id) })
     await query.answer({ text: 'Banned!' })
     
-    // todo: replace with query.editMessageWith once 0.2.0 is released
-    const msg = await query.getMessage()
-
-    // todo: replace with msg.textWithEntities once 0.2.0 is released
-    const msgTextWithEntities = {
-        text: msg.text,
-        entities: (msg.raw as any).entities
-    }
-    await query.client.editMessage({
-        message: msg, 
+    await query.editMessageWith(async (msg) => ({
         text: html`
-            ${msgTextWithEntities}
+            ${msg.textWithEntities}
             <br /><br/>
             Banned!
         `,
-    })
+    }))
 })
 
 dp.onCallbackQuery(UnbanCallback.filter(), async (query) => {
     await tg.unbanChatMember({ chatId: env.CHANNEL_ID, participantId: parseInt(query.match.id) })
     await query.answer({ text: 'Banned!' })
     
-    // todo: replace with query.editMessageWith once 0.2.0 is released
-    const msg = await query.getMessage()
-
-    // todo: replace with msg.textWithEntities once 0.2.0 is released
-    const msgTextWithEntities = {
-        text: msg.text,
-        entities: (msg.raw as any).entities
-    }
-    await query.client.editMessage({
-        message: msg, 
+    await query.editMessageWith(async (msg) => ({
         text: html`
-            ${msgTextWithEntities}
+            ${msg.textWithEntities}
             <br /><br/>
             Unbanned!
         `,
-    })
+    }))
 })
 
 tg.run(
