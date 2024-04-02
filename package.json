@@ -9,11 +9,12 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@mtcute/crypto-node": "^0.2.0",
-        "@mtcute/dispatcher": "^0.2.1",
-        "@mtcute/node": "^0.2.0",
-        "@mtcute/test": "^0.2.0",
-        "emoji-regex": "^10.3.0"
+        "@mtcute/crypto-node": "^0.7.0",
+        "@mtcute/dispatcher": "^0.7.0",
+        "@mtcute/node": "^0.7.0",
+        "@mtcute/test": "^0.7.0",
+        "emoji-regex": "^10.3.0",
+        "heapdump": "^0.3.15"
     },
     "devDependencies": {
         "@types/node": "^20.10.2",

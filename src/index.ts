@@ -4,6 +4,8 @@ import { BotKeyboard, NodeTelegramClient, html } from '@mtcute/node'
 import * as env from './env.js'
 import { shouldAutomaticallyBan } from './antispam.js'
 
+import 'heapdump'
+
 const tg = new NodeTelegramClient({
     apiId: env.API_ID,
     apiHash: env.API_HASH,

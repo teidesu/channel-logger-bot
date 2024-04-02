@@ -6,20 +6,23 @@ settings:
 
 dependencies:
   '@mtcute/crypto-node':
-    specifier: ^0.2.0
-    version: 0.2.0
+    specifier: ^0.7.0
+    version: 0.7.0
   '@mtcute/dispatcher':
-    specifier: ^0.2.1
-    version: 0.2.1(@mtcute/core@0.2.0)(@mtcute/tl@167.0.0)(vitest@0.34.6)
+    specifier: ^0.7.0
+    version: 0.7.0
   '@mtcute/node':
-    specifier: ^0.2.0
-    version: 0.2.0
+    specifier: ^0.7.0
+    version: 0.7.0
   '@mtcute/test':
-    specifier: ^0.2.0
-    version: 0.2.0(@mtcute/core@0.2.0)(@mtcute/tl@167.0.0)(vitest@0.34.6)
+    specifier: ^0.7.0
+    version: 0.7.1(@mtcute/core@0.7.3)(@mtcute/tl@167.0.0)(vitest@0.34.6)
   emoji-regex:
     specifier: ^10.3.0
     version: 10.3.0
+  heapdump:
+    specifier: ^0.3.15
+    version: 0.3.15
 
 devDependencies:
   '@types/node':
@@ -222,94 +225,90 @@ packages:
   /@jridgewell/sourcemap-codec@1.4.15:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
 
-  /@mtcute/client@0.2.1:
-    resolution: {integrity: sha512-uCzrchTVxxhjmDNgmGTialXwM/TCe2rTRCrSONtxdTpXxgckBAz0wElyqAeQHs74NB/PyMH8iBY6T1Y/vqpKAA==}
+  /@mtcute/core@0.7.3:
+    resolution: {integrity: sha512-CSy5uJgapzl84bD5karUktDK6iNDzNkIW1taWs96jvSXsyOXLXk66ssh2c2h0jO2VmWY5gvUV/xqEHCMyKgbFw==}
     dependencies:
-      '@mtcute/core': 0.2.0
-      '@mtcute/file-id': 0.2.0
-    dev: false
-
-  /@mtcute/core@0.2.0:
-    resolution: {integrity: sha512-UIvmHnuqoMMQVPkTARX7DvAzNiBZHlqznZSkSqAnsm49CGtJ3AamJAM9Lnmt1M3UAnhdp6P6OJIcsNzMlYeMRg==}
-    dependencies:
-      '@mtcute/tl': 167.0.0
-      '@mtcute/tl-runtime': 0.2.0
-      '@mtcute/wasm': 0.2.0
+      '@mtcute/file-id': 0.7.0
+      '@mtcute/tl': 174.0.0
+      '@mtcute/tl-runtime': 0.7.0
+      '@mtcute/wasm': 0.7.2
       '@types/events': 3.0.0
       events: 3.2.0
       long: 5.2.3
     dev: false
 
-  /@mtcute/crypto-node@0.2.0:
-    resolution: {integrity: sha512-iTIvdQgooDqCKRhjS1ZjnVoYXmfLKwEmh1NvSPUlFXtDUPnUfBxg4Ci50t2UaulVCchMo3oTLWZjQXKuc3LBuQ==}
+  /@mtcute/crypto-node@0.7.0:
+    resolution: {integrity: sha512-F+KsPdDAiA99J8CfXZ7jnwUHn4fnu6lTO6j3RXRK51EVymDWz025XA/pJYqE0A8WTY6mYiZkLewIuXZxgxU6IQ==}
     requiresBuild: true
     dependencies:
-      '@mtcute/core': 0.2.0
+      '@mtcute/core': 0.7.3
     dev: false
 
-  /@mtcute/dispatcher@0.2.1(@mtcute/core@0.2.0)(@mtcute/tl@167.0.0)(vitest@0.34.6):
-    resolution: {integrity: sha512-GP4VAsIf7EEZyZir5n1Im70B/lj6WQjrnRFJPfucSKYfFJpEj8OBqPYQOHc1BHZmuJmsT3QLzohmi67bZ1ZSjw==}
+  /@mtcute/dispatcher@0.7.0:
+    resolution: {integrity: sha512-/Hktumeyl+/m1ZBIhm+ThrWxNWNy6oRa4IEM48F2tP0Q4xUaJV491cxhSmIqZww1C6HLkKWaeuttjoPV2lx6kw==}
+    peerDependencies:
+      '@mtcute/sqlite': ^0.7.0
+    peerDependenciesMeta:
+      '@mtcute/sqlite':
+        optional: true
     dependencies:
-      '@mtcute/client': 0.2.1
-      '@mtcute/test': 0.2.0(@mtcute/core@0.2.0)(@mtcute/tl@167.0.0)(vitest@0.34.6)
+      '@mtcute/core': 0.7.3
       events: 3.2.0
-    transitivePeerDependencies:
-      - '@mtcute/core'
-      - '@mtcute/tl'
-      - vitest
     dev: false
 
-  /@mtcute/file-id@0.2.0:
-    resolution: {integrity: sha512-GHndFv05LayHPkKhrohhI/uy7GbooEPlagoPJm1vS2KIIpNytwk2+2er9YOCCR2d485UaWLt7dSIc3aqWW+5fg==}
+  /@mtcute/file-id@0.7.0:
+    resolution: {integrity: sha512-6ry9cKcbkaUGUhoSWx8WG98Og7nLcDgXY3yo2DmXTHey0PVo3Mjf6qtuHnpoBzYFjlIt//xgGUXOgJj4FcV9hA==}
     dependencies:
-      '@mtcute/core': 0.2.0
+      '@mtcute/tl-runtime': 0.7.0
+      long: 5.2.3
     dev: false
 
-  /@mtcute/html-parser@0.2.0:
-    resolution: {integrity: sha512-rd8w4lu+CJyfhSxY0sexx4cUT7zKGFIsGstt9A9f8SaK0KRdzoAERJWnholaXn1/Ltnt+Qt452Dg7jdPmerzsQ==}
+  /@mtcute/html-parser@0.7.0:
+    resolution: {integrity: sha512-HCvx9WKIrkZEibaQJa/ULWSPv7GskQse9B5JAbImOnbGKYEBF+mDYjaqGaEnvoDcM8B2xNKMpj1/ch3I6G2eGg==}
     dependencies:
       htmlparser2: 6.1.0
       long: 5.2.3
     dev: false
 
-  /@mtcute/markdown-parser@0.2.0:
-    resolution: {integrity: sha512-MiGTmPskpuIgs0K2Doazn390fnTdt2mij5GdnPVU3fTUgh+PVLi3doSJ4CIgA+D1o9THCuP9deXMsLAgxrdkZg==}
+  /@mtcute/markdown-parser@0.7.0:
+    resolution: {integrity: sha512-rYd3uvG6srh7zKbomaIsSxi2mdDUrkDKub370uHAlC+3CsOhQS4dxBcXyLpCl8MvqWP5uWHIvAfu9rrlUOPENg==}
     dependencies:
       long: 5.2.3
     dev: false
 
-  /@mtcute/node@0.2.0:
-    resolution: {integrity: sha512-AjK+WofMsBvpcBo9NFJhyaloEtvZLed/siksKs/SlBhaamCWT/RbP8JTESZ2scMWiFB3fP2NvooV/OlPntnWxA==}
+  /@mtcute/node@0.7.0:
+    resolution: {integrity: sha512-UaGyGcCrvE9bOUnasJoaW2Lp//jOwZM3ZoNFZZ9lMrosskvPYBpcUtCEYwdST9f5t1KSrr6lvJpP77bsqNxeGg==}
     dependencies:
-      '@mtcute/client': 0.2.1
-      '@mtcute/html-parser': 0.2.0
-      '@mtcute/markdown-parser': 0.2.0
-      '@mtcute/sqlite': 0.2.0
+      '@mtcute/core': 0.7.3
+      '@mtcute/html-parser': 0.7.0
+      '@mtcute/markdown-parser': 0.7.0
+      '@mtcute/sqlite': 0.7.0
     dev: false
 
-  /@mtcute/sqlite@0.2.0:
-    resolution: {integrity: sha512-6EyDkHfDg0Q+ubJwtd5VEN+CLa1sdjb+c28mxRkeix0omOM3WqhjFFb88QRA7FiEQEDJiPlTnMMpB0P0ETCj/g==}
+  /@mtcute/sqlite@0.7.0:
+    resolution: {integrity: sha512-PkJSmLGSmxT2V4RL+91Yaepfzs5HjrdQnp3SsNYav0HxnsnAaUikcvVdRU35wtzaxkPoyLGrAAbCtNQIru68xw==}
     dependencies:
-      '@mtcute/core': 0.2.0
-      '@mtcute/tl-runtime': 0.2.0
-      better-sqlite3: 8.4.0
+      '@mtcute/core': 0.7.3
+      '@mtcute/tl': 167.0.0
+      '@mtcute/tl-runtime': 0.7.0
+      better-sqlite3: 9.2.2
     dev: false
 
-  /@mtcute/test@0.2.0(@mtcute/core@0.2.0)(@mtcute/tl@167.0.0)(vitest@0.34.6):
-    resolution: {integrity: sha512-oULF3PXwWPcZZNojwFR0sOY1wWIBVWVfWzik+4PRld12WyRf8wlZ2H+N5Bgi7aFHwio5Vg2h4oq+Fw0UKYxWtw==}
+  /@mtcute/test@0.7.1(@mtcute/core@0.7.3)(@mtcute/tl@167.0.0)(vitest@0.34.6):
+    resolution: {integrity: sha512-C8u5K/It5FUtmOYXjuGO7oMo2pstPRGkmgqso48jstyWSfrL+AopE0FHWR9Kqbk0DoK7MQhPCu6UlMHz5Y7jvw==}
     peerDependencies:
-      '@mtcute/core': ^0.2.0
+      '@mtcute/core': ^0.7.1
       '@mtcute/tl': ^*
       vitest: ^0.34.6
     dependencies:
-      '@mtcute/core': 0.2.0
+      '@mtcute/core': 0.7.3
       '@mtcute/tl': 167.0.0
       long: 5.2.3
       vitest: 0.34.6
     dev: false
 
-  /@mtcute/tl-runtime@0.2.0:
-    resolution: {integrity: sha512-Ov3WeacB/3WsJ78hJhlfx3hbaafvYfxRkFo1tflvYUr+RyGMPZRrCcHzN4r6AuSWjjam6rWcXf0/V2yDGzfRTQ==}
+  /@mtcute/tl-runtime@0.7.0:
+    resolution: {integrity: sha512-wrNh8VmvYrQNoLZskCEa4XnVUyo7k266IcG60WH3sBSYyb0+utGJSbV3YIobZGMs4HO80QqxzyTq2wfNiDHzeA==}
     dependencies:
       long: 5.2.3
     dev: false
@@ -320,8 +319,14 @@ packages:
       long: 5.2.3
     dev: false
 
-  /@mtcute/wasm@0.2.0:
-    resolution: {integrity: sha512-Q04GYdisdpt5bZigypnkfVMZCXW5PXZCj5ZbEv173ialkl8DbP2SA7lZO9bFaOo32eTNCdieNYCMXUR5niiJZQ==}
+  /@mtcute/tl@174.0.0:
+    resolution: {integrity: sha512-OHgCMfEvvaD7YzxpRq4j8F2Lk4fi5b7jaukXenF9hEQnzgDDh+a9C8ZiUw6N7aCgwT+baOh97PIQOVWNovuWXA==}
+    dependencies:
+      long: 5.2.3
+    dev: false
+
+  /@mtcute/wasm@0.7.2:
+    resolution: {integrity: sha512-kynHtsb+wkcVRwDd76rC3Xg7LpFy9oeYtCjn5K7srbDLv/QI1LS8K5AJk1AvQ17dyGcu5m5HrGTFDCviEiWiHA==}
     dev: false
 
   /@rollup/rollup-android-arm-eabi@4.6.1:
@@ -481,8 +486,8 @@ packages:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
     dev: false
 
-  /better-sqlite3@8.4.0:
-    resolution: {integrity: sha512-NmsNW1CQvqMszu/CFAJ3pLct6NEFlNfuGM6vw72KHkjOD1UDnL96XNN1BMQc1hiHo8vE2GbOWQYIpZ+YM5wrZw==}
+  /better-sqlite3@9.2.2:
+    resolution: {integrity: sha512-qwjWB46il0lsDkeB4rSRI96HyDQr8sxeu1MkBVLMrwusq1KRu4Bpt1TMI+8zIJkDUtZ3umjAkaEjIlokZKWCQw==}
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
@@ -704,6 +709,14 @@ packages:
     resolution: {integrity: sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==}
     dev: false
 
+  /heapdump@0.3.15:
+    resolution: {integrity: sha512-n8aSFscI9r3gfhOcAECAtXFaQ1uy4QSke6bnaL+iymYZ/dWs9cqDqHM+rALfsHUwukUbxsdlECZ0pKmJdQ/4OA==}
+    engines: {node: '>=0.10.0'}
+    requiresBuild: true
+    dependencies:
+      nan: 2.19.0
+    dev: false
+
   /htmlparser2@6.1.0:
     resolution: {integrity: sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==}
     dependencies:
@@ -780,6 +793,10 @@ packages:
 
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
+
+  /nan@2.19.0:
+    resolution: {integrity: sha512-nO1xXxfh/RWNxfd/XPfbIfFk5vgLsAxUR9y5O0cHMJu/AW9U95JLXqthYHjEp+8gQ5p96K9jUp8nbVOxCdRbtw==}
+    dev: false
 
   /nanoid@3.3.7:
     resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
