@@ -1,5 +1,5 @@
 import { CallbackDataBuilder, Dispatcher, filters } from '@mtcute/dispatcher'
-import { BotKeyboard, ParametersSkip1, TelegramClient, html } from '@mtcute/node'
+import { BotKeyboard, ParametersSkip1, TelegramClient, User, html } from '@mtcute/node'
 
 import * as env from './env.js'
 import { shouldAutomaticallyBan } from './antispam.js'
@@ -43,6 +43,13 @@ async function sendToAllAdmins(
     await sendToAllAdminsExcept(chatId, null, ...params)
 }
 
+function mentionUser(user: User) {
+    if (user.username) {
+        return html`${user.mention(null)} (@${user.username}, ID <code>${user.id}</code>)`
+    }
+
+    return html`${user.mention(null)} (ID <code>${user.id}</code>)`
+}
 
 dp.onChatMemberUpdate(
     filters.and(
@@ -61,7 +68,7 @@ dp.onChatMemberUpdate(
             })
             await sendToAllAdmins(
                 update.chat.id,
-                html`Banned ${update.user.mention()} (ID <code>${update.user.id}</code>) in ${update.chat.mention()}. Reason - ${decision.reason}`,
+                html`Banned ${mentionUser(update.user)} in ${update.chat.mention()}. Reason - ${decision.reason}`,
                 {
                     replyMarkup: BotKeyboard.inline([
                         [BotKeyboard.callback('Unban', UnbanCallback.build({ 
@@ -78,7 +85,7 @@ dp.onChatMemberUpdate(
 
         await sendToAllAdmins(
             update.chat.id,
-            html`New user joined ${update.chat.mention()}: ${update.user.mention()} (ID <code>${update.user.id}</code>)`,
+            html`New user joined ${update.chat.mention()}: ${mentionUser(update.user)}`,
             {
                 replyMarkup: BotKeyboard.inline([
                     [BotKeyboard.callback('Ban', BanCallback.build({
@@ -99,7 +106,7 @@ dp.onChatMemberUpdate(
     async (update) => {
         await sendToAllAdmins(
             update.chat.id,
-            html`User left ${update.chat.mention()}: ${update.user.mention()} (ID <code>${update.user.id}</code>)`
+            html`User left ${update.chat.mention()}: ${mentionUser(update.user)}`
         )
     }
 )
