@@ -1,12 +1,12 @@
 import { CallbackDataBuilder, Dispatcher, filters } from '@mtcute/dispatcher'
-import { BotKeyboard, NodeTelegramClient, html } from '@mtcute/node'
+import { BotKeyboard, ParametersSkip1, TelegramClient, html } from '@mtcute/node'
 
 import * as env from './env.js'
 import { shouldAutomaticallyBan } from './antispam.js'
 
 import 'heapdump'
 
-const tg = new NodeTelegramClient({
+const tg = new TelegramClient({
     apiId: env.API_ID,
     apiHash: env.API_HASH,
     storage: 'bot-data/session',
@@ -18,25 +18,56 @@ dp.onNewMessage(filters.start, async (msg) => {
     await msg.answerText('Hello, world!')
 })
 
-const BanCallback = new CallbackDataBuilder('ban', 'id')
-const UnbanCallback = new CallbackDataBuilder('unban', 'id')
+const BanCallback = new CallbackDataBuilder('ban', 'chatId', 'userId')
+const UnbanCallback = new CallbackDataBuilder('unban', 'chatId', 'userId')
+
+async function sendToAllAdminsExcept(
+    chatId: number, 
+    except: number | null,
+    ...params: ParametersSkip1<TelegramClient['sendText']>
+) {
+    const admins = env.CHANNEL_ADMINS.get(chatId)
+    if (!admins?.size) return
+
+    await Promise.all(
+        [...admins]
+            .filter((id) => id !== except)
+            .map((id) => tg.sendText(id, ...params))
+    )
+}
+
+async function sendToAllAdmins(
+    chatId: number, 
+    ...params: ParametersSkip1<TelegramClient['sendText']>
+) {
+    await sendToAllAdminsExcept(chatId, null, ...params)
+}
+
 
 dp.onChatMemberUpdate(
     filters.and(
-        filters.chatId(env.CHANNEL_ID), 
+        filters.chatId([...env.CHANNEL_ADMINS.keys()]), 
         filters.chatMember('joined')
     ),
     async (update) => {
-        const decision = shouldAutomaticallyBan(update.user)
+        const decision = env.ANTISPAM_ENABLED.has(update.chat.id) 
+            ? shouldAutomaticallyBan(update.user) 
+            : null
 
-        if (decision.ban) {
-            await tg.banChatMember({ chatId: env.CHANNEL_ID, participantId: update.user.id })
-            await tg.sendText(
-                env.ADMIN_ID,
-                html`Banned ${update.user.mention()} (ID <code>${update.user.id}</code>). Reason - ${decision.reason}`,
+        if (decision?.ban) {
+            await tg.banChatMember({ 
+                chatId: update.chat.id, 
+                participantId: update.user.id
+            })
+            await sendToAllAdmins(
+                update.chat.id,
+                html`Banned ${update.user.mention()} (ID <code>${update.user.id}</code>) in ${update.chat.mention()}. Reason - ${decision.reason}`,
                 {
                     replyMarkup: BotKeyboard.inline([
-                        [BotKeyboard.callback('Unban', UnbanCallback.build({ id: String(update.user.id) }))]
+                        [BotKeyboard.callback('Unban', UnbanCallback.build({ 
+                            chatId: String(update.chat.id),
+                            userId: String(update.user.id) 
+                        }))]
                     ]),
                     silent: true,
                 }
@@ -45,12 +76,15 @@ dp.onChatMemberUpdate(
             return
         }
 
-        await tg.sendText(
-            env.ADMIN_ID,
-            html`New user joined: ${update.user.mention()} (ID <code>${update.user.id}</code>)`,
+        await sendToAllAdmins(
+            update.chat.id,
+            html`New user joined ${update.chat.mention()}: ${update.user.mention()} (ID <code>${update.user.id}</code>)`,
             {
                 replyMarkup: BotKeyboard.inline([
-                    [BotKeyboard.callback('Ban', BanCallback.build({ id: String(update.user.id) }))]
+                    [BotKeyboard.callback('Ban', BanCallback.build({
+                        chatId: String(update.chat.id),
+                        userId: String(update.user.id) 
+                    }))]
                 ])
             }
         )
@@ -59,19 +93,39 @@ dp.onChatMemberUpdate(
 
 dp.onChatMemberUpdate(
     filters.and(
-        filters.chatId(env.CHANNEL_ID), 
+        filters.chatId([...env.CHANNEL_ADMINS.keys()]), 
         filters.chatMember('left')
     ),
     async (update) => {
-        await tg.sendText(
-            env.ADMIN_ID,
-            html`User left: ${update.user.mention()}`
+        await sendToAllAdmins(
+            update.chat.id,
+            html`User left ${update.chat.mention()}: ${update.user.mention()} (ID <code>${update.user.id}</code>)`
         )
     }
 )
 
+dp.onChatMemberUpdate(
+    filters.and(
+        filters.chatMemberSelf,
+        filters.chatMember(['added', 'joined']),
+        filters.not(
+            filters.chatId([...env.CHANNEL_ADMINS.keys()])
+        )
+    ),
+    async (update) => {
+        await update.client.leaveChat(update.chat.id)
+    }
+)
+
 dp.onCallbackQuery(BanCallback.filter(), async (query) => {
-    await tg.banChatMember({ chatId: env.CHANNEL_ID, participantId: parseInt(query.match.id) })
+    const chatId = parseInt(query.match.chatId)
+
+    if (!env.CHANNEL_ADMINS.get(chatId)?.has(query.user.id)) {
+        await query.answer({ text: 'You are not an admin!' })
+        return
+    }
+    
+    await tg.banChatMember({ chatId, participantId: parseInt(query.match.userId) })
     await query.answer({ text: 'Banned!' })
     
     await query.editMessageWith(async (msg) => ({
@@ -81,10 +135,22 @@ dp.onCallbackQuery(BanCallback.filter(), async (query) => {
             Banned!
         `,
     }))
+    await sendToAllAdminsExcept(
+        chatId,
+        query.user.id,
+        html`${query.user.mention()} banned ${query.match.userId} in ${query.chat.mention()}`
+    )
 })
 
 dp.onCallbackQuery(UnbanCallback.filter(), async (query) => {
-    await tg.unbanChatMember({ chatId: env.CHANNEL_ID, participantId: parseInt(query.match.id) })
+    const chatId = parseInt(query.match.chatId)
+
+    if (!env.CHANNEL_ADMINS.get(chatId)?.has(query.user.id)) {
+        await query.answer({ text: 'You are not an admin!' })
+        return
+    }
+
+    await tg.unbanChatMember({ chatId, participantId: parseInt(query.match.userId) })
     await query.answer({ text: 'Banned!' })
     
     await query.editMessageWith(async (msg) => ({
@@ -94,6 +160,11 @@ dp.onCallbackQuery(UnbanCallback.filter(), async (query) => {
             Unbanned!
         `,
     }))
+    await sendToAllAdminsExcept(
+        chatId,
+        query.user.id,
+        html`${query.user.mention()} unbanned ${query.match.userId} in ${query.chat.mention()}`
+    )
 })
 
 tg.run(
