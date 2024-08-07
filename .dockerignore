@@ -1,0 +1,5 @@
+dist
+node_modules
+bot-data
+.vscode
+.env
