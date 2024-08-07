@@ -1,14 +1,15 @@
-# teispam-helper
+# channel-logger-bot
 
-MTCute powered Telegram bot
+simple self-hosted channel join/leave logger for telegram,
+with some simple anti-spam heuristics
 
-## Development
+## development
 
 ```bash
 pnpm install --frozen-lockfile
 cp .env.example .env 
 # edit .env
-pnpm run run
+pnpm dev
 ```
 
 *generated with @mtcute/create-bot*
