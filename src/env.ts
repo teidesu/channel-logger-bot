@@ -11,7 +11,12 @@ const ANTISPAM_ENABLED = new Set<number>(process.env.ANTISPAM_ENABLED?.split(','
 
 for (const key of Object.keys(process.env)) {
     if (!key.startsWith('ADMINS_')) continue
-    const id = parseInt(key.slice(7))
+    
+    // docker .env doesn't support hyphens
+    let str = key.slice(7)
+    if (str[0] === '_') str = '-' + str.slice(1)
+    
+    const id = parseInt(str)
     
     if (isNaN(id)) {
         console.warn('Invalid admin ID:', key)
