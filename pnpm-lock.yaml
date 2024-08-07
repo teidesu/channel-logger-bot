@@ -9,17 +9,17 @@ importers:
   .:
     dependencies:
       '@mtcute/crypto-node':
-        specifier: ^0.12.0
-        version: 0.12.0
+        specifier: ^0.16.0
+        version: 0.16.2
       '@mtcute/dispatcher':
-        specifier: ^0.12.0
-        version: 0.12.3
+        specifier: ^0.16.0
+        version: 0.16.0
       '@mtcute/node':
-        specifier: ^0.12.0
-        version: 0.12.0
+        specifier: ^0.16.0
+        version: 0.16.3
       '@mtcute/test':
-        specifier: ^0.12.0
-        version: 0.12.0(@mtcute/core@0.12.2)(@mtcute/node@0.12.0)(@mtcute/tl@179.0.0)(vitest@1.4.0(@types/node@20.10.2))
+        specifier: ^0.16.0
+        version: 0.16.5(@mtcute/core@0.16.4)(@mtcute/node@0.16.3)(@mtcute/tl@185.1.0)(vitest@1.4.0(@types/node@20.10.2))
       emoji-regex:
         specifier: ^10.3.0
         version: 10.3.0
@@ -319,49 +319,49 @@ packages:
   '@jridgewell/sourcemap-codec@1.4.15':
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
 
-  '@mtcute/core@0.12.2':
-    resolution: {integrity: sha512-dTbxusInjBN0WzOOg54cJ71w2Fl6JKy0xFqJ21RmEK63hRf3N3IcKqZJtOOMjwuDgoa3RCyE8gqI8ZEC8kDLAg==}
+  '@mtcute/core@0.16.4':
+    resolution: {integrity: sha512-oOG79qa2kyfobhzMre5fc+YQp8Ip/qNura2ARJli3l883WSM3qY8SrdWy+x03oQV9Aufiols6nnSqBnY+CuQwQ==}
 
-  '@mtcute/crypto-node@0.12.0':
-    resolution: {integrity: sha512-8tj0YC++sA1yVTrujYyWvMpOwhJE/4JXhW8n8kzUTA5WjwUoiNA0onyLdwY4PQGmSxJywqldUDhZ84PIv+yD5w==}
+  '@mtcute/crypto-node@0.16.2':
+    resolution: {integrity: sha512-60qCfZYASJ81HHhCahxXRXXEWjdc+RGtIOtE8U3p5BwhyCvXfcogY8v/eZcD//O9K1+hNVebl+PrpGu/OP6PwA==}
 
-  '@mtcute/dispatcher@0.12.3':
-    resolution: {integrity: sha512-dLY5zsy04RvWQqNfJ+wk5I/oX7drLldDttqBSD6NNqIv1zWfBjnzyXw886e8oBbd8aleh4rw6ejAa2/OtXu1mA==}
+  '@mtcute/dispatcher@0.16.0':
+    resolution: {integrity: sha512-sHZLi7w3Y895r2A/KxYyPAp5X107e9PIDmkTjPnoH2UU8vV2zqI9HM/fNYXQU2Imz/RC8ZrFWuqL6Mh9I2UWyw==}
 
-  '@mtcute/file-id@0.12.0':
-    resolution: {integrity: sha512-6ARMVZdfZYJ9H4DSiR5Ik/8hnfpAwCf8Y+yfxGTTQl6OadY31ZSv9SkJb2JtAF/UVmxE7tqg2UpGhSvlaFqo8w==}
+  '@mtcute/file-id@0.16.0':
+    resolution: {integrity: sha512-hScNnSF25c9yAJ2BeIO6iI+lgcguII4VsRpR3+ZLENrQ7jqY3WhoUuZ3wcwgqCqHNq02CI5oC3jBblPHdLd0xw==}
 
-  '@mtcute/html-parser@0.12.0':
-    resolution: {integrity: sha512-kSLTuVgFCjxBE1Llusmbc1SBbuU9NmbVkD1roeBMoioUzZObVS3DdXxKtfIy8TCx8ZHRpqG8CQ442UEGdhZRrg==}
+  '@mtcute/html-parser@0.16.0':
+    resolution: {integrity: sha512-PQMqN9771FN7H3PPWZbGS4sqxm+5hO4r87C+aXm63vJ7S8cmSsFgpotpHFtpH06jW/Mn0sYQqeOtUo17N4T8vA==}
 
-  '@mtcute/markdown-parser@0.12.0':
-    resolution: {integrity: sha512-k4YAbscgKyejJ7z95vZOUqEeqhPBcdznrlr6pQufd0dTJQjq7lfkIn0ob+xRi0O1/vYZ/73WakGPqLvDNsgZUA==}
+  '@mtcute/markdown-parser@0.16.3':
+    resolution: {integrity: sha512-f7QSImgXR3zhJxmSvwPsCZvdeupz4nZhPfUrDj9ZAsng7DUWQ9L5oFvTrMM//D2jqH4TVvJhSHTdHCysrrWATg==}
 
-  '@mtcute/node@0.12.0':
-    resolution: {integrity: sha512-VlyhfCEyzYJUodAopPQQ4TIwuXyT2RjMgAuInkydC7p5XdG1nDdgMXfAWxvgwcGBqV79qmiXy7rnVylqktlBSw==}
+  '@mtcute/node@0.16.3':
+    resolution: {integrity: sha512-zlxb1owY++QMYNdnwD0w0HNvIS7lbgIdr6EPbEDCRYY5PEzQCXYJG6QmKh1qc/0742eUUI2vkREU08wwG2B9dg==}
 
-  '@mtcute/test@0.12.0':
-    resolution: {integrity: sha512-WTI/O07LgBlJ4MmXZ+b3aJIEJDsvekwIZSVOuk3WJHSA/ZpC9kZgQGZOW4xdxkwOUbZLhfCdRMXncVUof5X4Yw==}
+  '@mtcute/test@0.16.5':
+    resolution: {integrity: sha512-keFVcp9RxCNmP+0OKkaCbNlSCIj3epM0aj7pNBgfUZ0a+/0nDxNnksM5ViClI4dnfy0sTJx6jgfO4LacVUmvlw==}
     peerDependencies:
-      '@mtcute/core': ^0.12.0
-      '@mtcute/node': ^0.12.0
+      '@mtcute/core': ^0.16.4
+      '@mtcute/node': ^0.16.3
       '@mtcute/tl': '*'
-      '@mtcute/web': ^0.12.0
-      vitest: 1.4.0
+      '@mtcute/web': ^0.16.2
+      vitest: ^1.4.0
     peerDependenciesMeta:
       '@mtcute/node':
         optional: true
       '@mtcute/web':
         optional: true
 
-  '@mtcute/tl-runtime@0.12.0':
-    resolution: {integrity: sha512-a8biV/jbyoBRit7D08IbEPi5aVlAATr+ofRQ2foWCJ1tMH6w7z9JttJS0RXZUbdcQUymvfFYBfHEVhnO8jZrMw==}
+  '@mtcute/tl-runtime@0.16.0':
+    resolution: {integrity: sha512-9HSYbP+ANL6pQmpST4rr+qHg2po2zzhJA/V2+/OLdMlssQRYk5P7xvL7iskwBc0Z5gCVkrIZ57NWTOLNicKLnw==}
 
-  '@mtcute/tl@179.0.0':
-    resolution: {integrity: sha512-NC+BMwxs6szepqu3ntP0ox246MeKEQbp81ZZznECKNsVSD66kA1NfK+DxJvCgg/6LqZ32ZtiKmTgfzUMtUF24g==}
+  '@mtcute/tl@185.1.0':
+    resolution: {integrity: sha512-P72BmkKwsDqhlZ86sEZ5TkZhbrw1pAuO8xrLAVQgoH7ywsqFsmtVXXkUD/otHNEnLT8OxOnY/vECdVRKTB+JYQ==}
 
-  '@mtcute/wasm@0.12.0':
-    resolution: {integrity: sha512-IkiqZLOlnEeDLC3pGeMxcp0o0NqqQsURHhHl8XIuoJQzOb9NVR/kkHh1rNAYDp6vItKf1D2fGzLS881dN4sQYQ==}
+  '@mtcute/wasm@0.16.0':
+    resolution: {integrity: sha512-JKHVzYRIjc2p71L2EFz2DOnpJY4wZ3/4XLRLt7S59lcxRn7+aWGpVED1UF7kq87VmokbuY9y0poXD5RqE6FfVQ==}
 
   '@rollup/rollup-android-arm-eabi@4.6.1':
     resolution: {integrity: sha512-0WQ0ouLejaUCRsL93GD4uft3rOmB8qoQMU05Kb8CmMtMBe7XUDLAltxVZI1q6byNqEtU7N1ZX1Vw5lIpgulLQA==}
@@ -693,8 +693,8 @@ packages:
     resolution: {integrity: sha512-SQkEP4hmNWjlniS5zdnfIXTk1x7Ome85RDzHlTbBtzE97Gfwz/Ipw4v/Ryk20DWIy3yCNVLVlGKApCnmvYoJbA==}
     engines: {node: '>=10'}
 
-  node-gyp-build@4.8.0:
-    resolution: {integrity: sha512-u6fs2AEUljNho3EYTJNBfImO5QTo/J/1Etd+NVdCj7qWKUSN/bSLkZwhDv7I+w/MSC6qJ4cknepkAYykDdK8og==}
+  node-gyp-build@4.8.1:
+    resolution: {integrity: sha512-OSs33Z9yWr148JZcbZd5WiAXhh/n9z8TxQcdMhIOlpN9AhWpLfvVFO73+m77bBABQMaY9XSvIa+qk0jlI7Gcaw==}
     hasBin: true
 
   npm-run-path@5.3.0:
@@ -1085,67 +1085,67 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.4.15': {}
 
-  '@mtcute/core@0.12.2':
+  '@mtcute/core@0.16.4':
     dependencies:
-      '@mtcute/file-id': 0.12.0
-      '@mtcute/tl': 179.0.0
-      '@mtcute/tl-runtime': 0.12.0
+      '@mtcute/file-id': 0.16.0
+      '@mtcute/tl': 185.1.0
+      '@mtcute/tl-runtime': 0.16.0
       '@types/events': 3.0.0
       events: 3.2.0
       long: 5.2.3
 
-  '@mtcute/crypto-node@0.12.0':
+  '@mtcute/crypto-node@0.16.2':
     dependencies:
-      '@mtcute/node': 0.12.0
-      node-gyp-build: 4.8.0
+      '@mtcute/node': 0.16.3
+      node-gyp-build: 4.8.1
 
-  '@mtcute/dispatcher@0.12.3':
+  '@mtcute/dispatcher@0.16.0':
     dependencies:
-      '@mtcute/core': 0.12.2
+      '@mtcute/core': 0.16.4
       events: 3.2.0
 
-  '@mtcute/file-id@0.12.0':
+  '@mtcute/file-id@0.16.0':
     dependencies:
-      '@mtcute/tl-runtime': 0.12.0
+      '@mtcute/tl-runtime': 0.16.0
       long: 5.2.3
 
-  '@mtcute/html-parser@0.12.0':
+  '@mtcute/html-parser@0.16.0':
     dependencies:
-      '@mtcute/core': 0.12.2
+      '@mtcute/core': 0.16.4
       htmlparser2: 6.1.0
       long: 5.2.3
 
-  '@mtcute/markdown-parser@0.12.0':
+  '@mtcute/markdown-parser@0.16.3':
     dependencies:
-      '@mtcute/core': 0.12.2
+      '@mtcute/core': 0.16.4
       long: 5.2.3
 
-  '@mtcute/node@0.12.0':
+  '@mtcute/node@0.16.3':
     dependencies:
-      '@mtcute/core': 0.12.2
-      '@mtcute/html-parser': 0.12.0
-      '@mtcute/markdown-parser': 0.12.0
-      '@mtcute/wasm': 0.12.0
+      '@mtcute/core': 0.16.4
+      '@mtcute/html-parser': 0.16.0
+      '@mtcute/markdown-parser': 0.16.3
+      '@mtcute/wasm': 0.16.0
       better-sqlite3: 9.5.0
 
-  '@mtcute/test@0.12.0(@mtcute/core@0.12.2)(@mtcute/node@0.12.0)(@mtcute/tl@179.0.0)(vitest@1.4.0(@types/node@20.10.2))':
+  '@mtcute/test@0.16.5(@mtcute/core@0.16.4)(@mtcute/node@0.16.3)(@mtcute/tl@185.1.0)(vitest@1.4.0(@types/node@20.10.2))':
     dependencies:
-      '@mtcute/core': 0.12.2
-      '@mtcute/tl': 179.0.0
+      '@mtcute/core': 0.16.4
+      '@mtcute/tl': 185.1.0
       long: 5.2.3
       vitest: 1.4.0(@types/node@20.10.2)
     optionalDependencies:
-      '@mtcute/node': 0.12.0
+      '@mtcute/node': 0.16.3
 
-  '@mtcute/tl-runtime@0.12.0':
+  '@mtcute/tl-runtime@0.16.0':
     dependencies:
       long: 5.2.3
 
-  '@mtcute/tl@179.0.0':
+  '@mtcute/tl@185.1.0':
     dependencies:
       long: 5.2.3
 
-  '@mtcute/wasm@0.12.0': {}
+  '@mtcute/wasm@0.16.0': {}
 
   '@rollup/rollup-android-arm-eabi@4.6.1':
     optional: true
@@ -1488,7 +1488,7 @@ snapshots:
     dependencies:
       semver: 7.5.4
 
-  node-gyp-build@4.8.0: {}
+  node-gyp-build@4.8.1: {}
 
   npm-run-path@5.3.0:
     dependencies:
