@@ -4,8 +4,6 @@ import { BotKeyboard, ParametersSkip1, TelegramClient, User, html } from '@mtcut
 import * as env from './env.js'
 import { shouldAutomaticallyBan } from './antispam.js'
 
-import 'heapdump'
-
 const tg = new TelegramClient({
     apiId: env.API_ID,
     apiHash: env.API_HASH,
@@ -54,7 +52,7 @@ function mentionUser(user: User) {
 dp.onChatMemberUpdate(
     filters.and(
         filters.chatId([...env.CHANNEL_ADMINS.keys()]), 
-        filters.chatMember('joined')
+        filters.chatMember(['added', 'joined'])
     ),
     async (update) => {
         const decision = env.ANTISPAM_ENABLED.has(update.chat.id) 
