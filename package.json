@@ -5,7 +5,8 @@
     "main": "dist/index.js",
     "type": "module",
     "scripts": {
-        "start": "tsc && dotenv node ./dist/index.js",
+        "dev": "dotenv tsx watch ./src/index.ts",
+        "start": "node dist/index.js",
         "build": "tsc"
     },
     "dependencies": {
@@ -13,13 +14,14 @@
         "@mtcute/dispatcher": "^0.12.0",
         "@mtcute/node": "^0.12.0",
         "@mtcute/test": "^0.12.0",
-        "emoji-regex": "^10.3.0",
-        "heapdump": "^0.3.15"
+        "emoji-regex": "^10.3.0"
     },
     "devDependencies": {
         "@types/node": "^20.10.2",
         "dotenv-cli": "^7.3.0",
+        "tsx": "^4.16.5",
         "typescript": "^5.3.2",
         "vitest": "1.4.0"
-    }
+    },
+    "packageManager": "pnpm@9.5.0"
 }
