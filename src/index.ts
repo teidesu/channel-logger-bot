@@ -19,6 +19,9 @@ dp.onNewMessage(filters.start, async (msg) => {
 const BanCallback = new CallbackDataBuilder('ban', 'chatId', 'userId')
 const UnbanCallback = new CallbackDataBuilder('unban', 'chatId', 'userId')
 
+// chatId -> expires
+const confirms = new Map<number, number>()
+
 async function sendToAllAdminsExcept(
     chatId: number, 
     except: number | null,
@@ -129,7 +132,15 @@ dp.onCallbackQuery(BanCallback.filter(), async (query) => {
         await query.answer({ text: 'You are not an admin!' })
         return
     }
+
+    const confirmExpires = confirms.get(query.user.id)
+    if (!confirmExpires || confirmExpires < Date.now()) {
+        await query.answer({ text: 'Click the button again within 1 minute to confirm' })
+        confirms.set(query.user.id, Date.now() + 1000 * 60)
+        return
+    }
     
+    confirms.delete(query.user.id)
     await tg.banChatMember({ chatId, participantId: parseInt(query.match.userId) })
     await query.answer({ text: 'Banned!' })
     
@@ -155,8 +166,16 @@ dp.onCallbackQuery(UnbanCallback.filter(), async (query) => {
         return
     }
 
+    const confirmExpires = confirms.get(query.user.id)
+    if (!confirmExpires || confirmExpires < Date.now()) {
+        await query.answer({ text: 'Click the button again within 1 minute to confirm' })
+        confirms.set(query.user.id, Date.now() + 1000 * 60)
+        return
+    }
+
+    confirms.delete(query.user.id)
     await tg.unbanChatMember({ chatId, participantId: parseInt(query.match.userId) })
-    await query.answer({ text: 'Banned!' })
+    await query.answer({ text: 'Unbanned!' })
     
     await query.editMessageWith(async (msg) => ({
         text: html`
