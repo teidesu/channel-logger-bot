@@ -105,10 +105,12 @@ dp.onChatMemberUpdate(
         filters.chatMember('left')
     ),
     async (update) => {
-        await sendToAllAdmins(
-            update.chat.id,
-            html`User left ${update.chat.mention()}: ${mentionUser(update.user)}`
-        )
+        const text = html`User left ${update.chat.mention()}: ${mentionUser(update.user)}`
+        await sendToAllAdmins(update.chat.id, text)
+
+        if (env.LEAVE_MESSAGES_ENABLED.has(update.chat.id)) {
+            await tg.sendText(update.chat.id, text)
+        }
     }
 )
 

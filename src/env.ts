@@ -8,6 +8,7 @@ if (isNaN(API_ID) || !API_HASH) {
 
 const CHANNEL_ADMINS = new Map<number, Set<number>>()
 const ANTISPAM_ENABLED = new Set<number>(process.env.ANTISPAM_ENABLED?.split(',').map(Number))
+const LEAVE_MESSAGES_ENABLED = new Set<number>(process.env.LEAVE_MESSAGES_ENABLED?.split(',').map(Number))
 
 for (const key of Object.keys(process.env)) {
     if (!key.startsWith('ADMINS_')) continue
@@ -35,4 +36,4 @@ for (const key of Object.keys(process.env)) {
     }
 }
 
-export { API_HASH, API_ID, BOT_TOKEN, ANTISPAM_ENABLED, CHANNEL_ADMINS }
+export { API_HASH, API_ID, BOT_TOKEN, ANTISPAM_ENABLED, CHANNEL_ADMINS, LEAVE_MESSAGES_ENABLED }
