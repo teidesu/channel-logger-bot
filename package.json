@@ -15,7 +15,8 @@
         "@mtcute/dispatcher": "^0.16.0",
         "@mtcute/node": "^0.16.0",
         "@mtcute/test": "^0.16.0",
-        "emoji-regex": "^10.3.0"
+        "emoji-regex": "^10.3.0",
+        "figlet": "^1.8.0"
     },
     "devDependencies": {
         "@types/node": "^20.10.2",

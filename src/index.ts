@@ -2,7 +2,9 @@ import { CallbackDataBuilder, Dispatcher, filters } from '@mtcute/dispatcher'
 import { BotKeyboard, ParametersSkip1, TelegramClient, User, html } from '@mtcute/node'
 
 import * as env from './env.js'
+import { captchaDp, handleCaptchaJoin } from './captcha.js'
 import { shouldAutomaticallyBan } from './antispam.js'
+import { adminDp } from './admin.js'
 
 const tg = new TelegramClient({
     apiId: env.API_ID,
@@ -57,24 +59,24 @@ dp.onChatMemberUpdate(
         filters.chatId([...env.CHANNEL_ADMINS.keys()]), 
         filters.chatMember(['added', 'joined'])
     ),
-    async (update) => {
-        const decision = env.ANTISPAM_ENABLED.has(update.chat.id) 
-            ? shouldAutomaticallyBan(update.user) 
+    async (ctx) => {
+        const decision = env.ANTISPAM_ENABLED.has(ctx.chat.id) 
+            ? shouldAutomaticallyBan(ctx.user) 
             : null
 
         if (decision?.ban) {
             await tg.banChatMember({ 
-                chatId: update.chat.id, 
-                participantId: update.user.id
+                chatId: ctx.chat.id, 
+                participantId: ctx.user.id
             })
             await sendToAllAdmins(
-                update.chat.id,
-                html`Banned ${mentionUser(update.user)} in ${update.chat.mention()}. Reason - ${decision.reason}`,
+                ctx.chat.id,
+                html`Banned ${mentionUser(ctx.user)} in ${ctx.chat.mention()}. Reason - ${decision.reason}`,
                 {
                     replyMarkup: BotKeyboard.inline([
                         [BotKeyboard.callback('Unban', UnbanCallback.build({ 
-                            chatId: String(update.chat.id),
-                            userId: String(update.user.id) 
+                            chatId: String(ctx.chat.id),
+                            userId: String(ctx.user.id) 
                         }))]
                     ]),
                     silent: true,
@@ -84,14 +86,20 @@ dp.onChatMemberUpdate(
             return
         }
 
+        if (env.CAPTCHA_ENABLED.has(ctx.chat.id)) {
+            await handleCaptchaJoin(ctx)
+
+            return
+        }
+
         await sendToAllAdmins(
-            update.chat.id,
-            html`New user joined ${update.chat.mention()}: ${mentionUser(update.user)}`,
+            ctx.chat.id,
+            html`New user joined ${ctx.chat.mention()}: ${mentionUser(ctx.user)}`,
             {
                 replyMarkup: BotKeyboard.inline([
                     [BotKeyboard.callback('Ban', BanCallback.build({
-                        chatId: String(update.chat.id),
-                        userId: String(update.user.id) 
+                        chatId: String(ctx.chat.id),
+                        userId: String(ctx.user.id) 
                     }))]
                 ])
             }
@@ -192,6 +200,9 @@ dp.onCallbackQuery(UnbanCallback.filter(), async (query) => {
         html`${query.user.mention()} unbanned ${query.match.userId} in ${query.chat.mention()}`
     )
 })
+
+dp.extend(captchaDp)
+dp.extend(adminDp)
 
 tg.run(
     { botToken: env.BOT_TOKEN },
