@@ -1,14 +1,15 @@
 import { CallbackDataBuilder, Dispatcher, filters } from '@mtcute/dispatcher'
 import { BotKeyboard, ParametersSkip1, TelegramClient, User, html } from '@mtcute/node'
 
-import * as env from './env.js'
+import { config } from './config.js'
 import { captchaDp, handleCaptchaJoin } from './captcha.js'
 import { shouldAutomaticallyBan } from './antispam.js'
 import { adminDp } from './admin.js'
+import { asNonNull } from '@fuman/utils'
 
 const tg = new TelegramClient({
-    apiId: env.API_ID,
-    apiHash: env.API_HASH,
+    apiId: config.apiId,
+    apiHash: config.apiHash,
     storage: 'bot-data/session',
 })
 
@@ -29,7 +30,7 @@ async function sendToAllAdminsExcept(
     except: number | null,
     ...params: ParametersSkip1<TelegramClient['sendText']>
 ) {
-    const admins = env.CHANNEL_ADMINS.get(chatId)
+    const admins = config.chats[chatId]?.admins
     if (!admins?.size) return
 
     await Promise.all(
@@ -56,11 +57,13 @@ function mentionUser(user: User) {
 
 dp.onChatMemberUpdate(
     filters.and(
-        filters.chatId([...env.CHANNEL_ADMINS.keys()]), 
+        filters.chatId(Object.keys(config.chats)),
         filters.chatMember(['added', 'joined'])
     ),
     async (ctx) => {
-        const decision = env.ANTISPAM_ENABLED.has(ctx.chat.id) 
+        const chatConfig = config.chats[ctx.chat.id]
+
+        const decision = chatConfig.antispam
             ? shouldAutomaticallyBan(ctx.user) 
             : null
 
@@ -86,7 +89,7 @@ dp.onChatMemberUpdate(
             return
         }
 
-        if (env.CAPTCHA_ENABLED.has(ctx.chat.id)) {
+        if (chatConfig.captcha) {
             await handleCaptchaJoin(ctx)
 
             return
@@ -109,14 +112,16 @@ dp.onChatMemberUpdate(
 
 dp.onChatMemberUpdate(
     filters.and(
-        filters.chatId([...env.CHANNEL_ADMINS.keys()]), 
+        filters.chatId(Object.keys(config.chats)),
         filters.chatMember('left')
     ),
     async (update) => {
         const text = html`User left ${update.chat.mention()}: ${mentionUser(update.user)}`
         await sendToAllAdmins(update.chat.id, text)
 
-        if (env.LEAVE_MESSAGES_ENABLED.has(update.chat.id)) {
+        const chatConfig = config.chats[update.chat.id]
+
+        if (chatConfig.leaveMessages) {
             await tg.sendText(update.chat.id, text)
         }
     }
@@ -127,7 +132,7 @@ dp.onChatMemberUpdate(
         filters.chatMemberSelf,
         filters.chatMember(['added', 'joined']),
         filters.not(
-            filters.chatId([...env.CHANNEL_ADMINS.keys()])
+            filters.chatId(Object.keys(config.chats))
         )
     ),
     async (update) => {
@@ -138,7 +143,7 @@ dp.onChatMemberUpdate(
 dp.onCallbackQuery(BanCallback.filter(), async (query) => {
     const chatId = parseInt(query.match.chatId)
 
-    if (!env.CHANNEL_ADMINS.get(chatId)?.has(query.user.id)) {
+    if (!config.chats[chatId]?.admins?.has(query.user.id)) {
         await query.answer({ text: 'You are not an admin!' })
         return
     }
@@ -171,7 +176,7 @@ dp.onCallbackQuery(BanCallback.filter(), async (query) => {
 dp.onCallbackQuery(UnbanCallback.filter(), async (query) => {
     const chatId = parseInt(query.match.chatId)
 
-    if (!env.CHANNEL_ADMINS.get(chatId)?.has(query.user.id)) {
+    if (!config.chats[chatId]?.admins?.has(query.user.id)) {
         await query.answer({ text: 'You are not an admin!' })
         return
     }
@@ -205,7 +210,7 @@ dp.extend(captchaDp)
 dp.extend(adminDp)
 
 tg.run(
-    { botToken: env.BOT_TOKEN },
+    { botToken: config.botToken },
     async (user) => {
         console.log('Logged in as', user.username)
     },

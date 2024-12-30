@@ -1,0 +1,17 @@
+apiId = 123
+apiHash = '...'
+botToken = '...'
+
+# id of the channel
+[chats.-100123123123]
+# list of admins that will receive messages on join/leave
+admins = [123123, 456456]
+# whether to enable simple anti-spam heuristics
+antispam = true
+# whether to enable admin commands
+adminCommands = true
+# whether to send a message when a user leaves
+leaveMessages = true
+# whether to enable captcha on join
+captcha = true
+

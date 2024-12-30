@@ -1,13 +1,13 @@
 import { Dispatcher, filters, MessageContext, PropagationAction } from "@mtcute/dispatcher";
-import { ADMIN_COMMANDS_ENABLED } from "./env.js";
 import { html, InputPeerLike } from "@mtcute/node";
+import { config } from "./config.js";
 
 const dp = Dispatcher.child()
 
 const cachedAdmins = new Map<string, boolean>()
 
 async function verifyAdmin(ctx: MessageContext): Promise<boolean> {
-    if (!ADMIN_COMMANDS_ENABLED.has(ctx.chat.id)) return false
+    if (!config.chats[ctx.chat.id]?.adminCommands) return false
     if (ctx.sender.id === ctx.chat.id) return false
 
     const adminKey = `${ctx.chat.id}:${ctx.sender.id}`
