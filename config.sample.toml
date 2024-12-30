@@ -14,4 +14,5 @@ adminCommands = true
 leaveMessages = true
 # whether to enable captcha on join
 captcha = true
-
+# inline bots messages from which will be immediately removed
+bannedInlineBots = ['inlinebot', 'other_bot']

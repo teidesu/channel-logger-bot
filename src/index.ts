@@ -13,6 +13,8 @@ const tg = new TelegramClient({
     storage: 'bot-data/session',
 })
 
+const connectedChatIds = Object.keys(config.chats).map(Number)
+
 const dp = Dispatcher.for(tg)
 
 dp.onNewMessage(filters.start, async (msg) => {
@@ -57,7 +59,7 @@ function mentionUser(user: User) {
 
 dp.onChatMemberUpdate(
     filters.and(
-        filters.chatId(Object.keys(config.chats)),
+        filters.chatId(connectedChatIds),
         filters.chatMember(['added', 'joined'])
     ),
     async (ctx) => {
@@ -112,7 +114,7 @@ dp.onChatMemberUpdate(
 
 dp.onChatMemberUpdate(
     filters.and(
-        filters.chatId(Object.keys(config.chats)),
+        filters.chatId(connectedChatIds),
         filters.chatMember('left')
     ),
     async (update) => {
@@ -132,7 +134,7 @@ dp.onChatMemberUpdate(
         filters.chatMemberSelf,
         filters.chatMember(['added', 'joined']),
         filters.not(
-            filters.chatId(Object.keys(config.chats))
+            filters.chatId(connectedChatIds)
         )
     ),
     async (update) => {
@@ -204,6 +206,14 @@ dp.onCallbackQuery(UnbanCallback.filter(), async (query) => {
         query.user.id,
         html`${query.user.mention()} unbanned ${query.match.userId} in ${query.chat.mention()}`
     )
+})
+
+dp.onNewMessage(filters.chatId(connectedChatIds), async (msg) => {
+    const chatConfig = config.chats[msg.chat.id]
+    
+    if (msg.viaBot && chatConfig.bannedInlineBots?.has(msg.viaBot.username!.toLowerCase())) {
+        await msg.delete()
+    }
 })
 
 dp.extend(captchaDp)
