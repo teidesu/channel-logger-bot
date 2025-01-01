@@ -12,17 +12,17 @@ importers:
         specifier: 0.0.4
         version: 0.0.4
       '@mtcute/crypto-node':
-        specifier: ^0.16.0
-        version: 0.16.2
+        specifier: ^0.19.0
+        version: 0.19.0
       '@mtcute/dispatcher':
-        specifier: ^0.16.0
-        version: 0.16.0
+        specifier: ^0.19.0
+        version: 0.19.0
       '@mtcute/node':
-        specifier: ^0.16.0
-        version: 0.16.3
+        specifier: ^0.19.0
+        version: 0.19.0
       '@mtcute/test':
-        specifier: ^0.16.0
-        version: 0.16.5(@mtcute/core@0.16.4)(@mtcute/node@0.16.3)(@mtcute/tl@185.1.0)(vitest@1.4.0(@types/node@20.10.2))
+        specifier: ^0.19.0
+        version: 0.19.0(@mtcute/core@0.19.0)(@mtcute/node@0.19.0)(@mtcute/tl@195.0.0)(vitest@1.4.0(@types/node@20.10.2))
       emoji-regex:
         specifier: ^10.3.0
         version: 10.3.0
@@ -324,6 +324,15 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@fuman/io@0.0.4':
+    resolution: {integrity: sha512-IXzBJjHTVKyi04WaGtSXE0dhL3QK45ekrEZNfH/V59XQ1WupSqWevfSWd9T07rdagc2jtaeu8aJY6bwaiJpdYg==}
+
+  '@fuman/net@0.0.4':
+    resolution: {integrity: sha512-a8Isnj+qgRNaqqmBCT6lZ9GZj5F3vQdygN5AzB6GGCbLKcOeH+1u5Twh5CUAW/dM7oogrTWOwCqgvS2XHbjzaQ==}
+
+  '@fuman/node@0.0.4':
+    resolution: {integrity: sha512-tgwbIceUHWuwh4RTwJRQ1sLjzuIGrWx0SeCrqYhGF+IkI/B7DY0FP2SZykWImkVDtW8IzmdZskPZqiDINRGcNg==}
+
   '@fuman/utils@0.0.4':
     resolution: {integrity: sha512-YBZIlGDbM8s9G85pWFZJ9wQrDY4511XLHZ06/uxZfXBY0eSStwje8JFNmRMNF0SjRk4D3iRmPl9wirHKTkg89w==}
 
@@ -334,49 +343,49 @@ packages:
   '@jridgewell/sourcemap-codec@1.4.15':
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
 
-  '@mtcute/core@0.16.4':
-    resolution: {integrity: sha512-oOG79qa2kyfobhzMre5fc+YQp8Ip/qNura2ARJli3l883WSM3qY8SrdWy+x03oQV9Aufiols6nnSqBnY+CuQwQ==}
+  '@mtcute/core@0.19.0':
+    resolution: {integrity: sha512-+a6KWLvVBBmKMXh5vI+4taTqYPRze+i1ZbWe4L3sLvg+OExVlmlPMICK+/8ns0pSLXTXaFQKmGJ3e+9Iu3XLvA==}
 
-  '@mtcute/crypto-node@0.16.2':
-    resolution: {integrity: sha512-60qCfZYASJ81HHhCahxXRXXEWjdc+RGtIOtE8U3p5BwhyCvXfcogY8v/eZcD//O9K1+hNVebl+PrpGu/OP6PwA==}
+  '@mtcute/crypto-node@0.19.0':
+    resolution: {integrity: sha512-MEG1FIbMZ+GfMMBovcyAmquHR9SPEp4NJvZOaI6NNpZNntoVq2Oyj+SclwLM6UGdfdRn5CD4OkbRWT5iTNJG6Q==}
 
-  '@mtcute/dispatcher@0.16.0':
-    resolution: {integrity: sha512-sHZLi7w3Y895r2A/KxYyPAp5X107e9PIDmkTjPnoH2UU8vV2zqI9HM/fNYXQU2Imz/RC8ZrFWuqL6Mh9I2UWyw==}
+  '@mtcute/dispatcher@0.19.0':
+    resolution: {integrity: sha512-IS6X6h3aSsVjc7jxvdJL4X57m02vRvTqk53yH/c0yqajFSRgMrQvevl6aHXTcZTDeNk9Jy2uL8c3bIJH86w+Fw==}
 
-  '@mtcute/file-id@0.16.0':
-    resolution: {integrity: sha512-hScNnSF25c9yAJ2BeIO6iI+lgcguII4VsRpR3+ZLENrQ7jqY3WhoUuZ3wcwgqCqHNq02CI5oC3jBblPHdLd0xw==}
+  '@mtcute/file-id@0.19.0':
+    resolution: {integrity: sha512-r9r5JxchoVtYYMLPsf/wSnd5+KB4KmilWHywKQenf0DgKD+LCEN2FJpzY44RFE5dpy+eV5OHZ85zxA6EyYz/mA==}
 
-  '@mtcute/html-parser@0.16.0':
-    resolution: {integrity: sha512-PQMqN9771FN7H3PPWZbGS4sqxm+5hO4r87C+aXm63vJ7S8cmSsFgpotpHFtpH06jW/Mn0sYQqeOtUo17N4T8vA==}
+  '@mtcute/html-parser@0.19.0':
+    resolution: {integrity: sha512-AVYD2/FT5g/a2m1o8+9Lg/0H/VIkxAwd9uqvXcR+aMpTQlQExWVwNi805yOtzs2sv8QK0yyVbN5AL7STBu+x+g==}
 
-  '@mtcute/markdown-parser@0.16.3':
-    resolution: {integrity: sha512-f7QSImgXR3zhJxmSvwPsCZvdeupz4nZhPfUrDj9ZAsng7DUWQ9L5oFvTrMM//D2jqH4TVvJhSHTdHCysrrWATg==}
+  '@mtcute/markdown-parser@0.19.0':
+    resolution: {integrity: sha512-sc8Yl5eDjEZ975/UMJNsHoiIjW6oKA2m1j4bi966ZxZ1L1SYjlsgnm1b/Vg+rsbeYoCjz1xU9eZMkPZh2jIVWA==}
 
-  '@mtcute/node@0.16.3':
-    resolution: {integrity: sha512-zlxb1owY++QMYNdnwD0w0HNvIS7lbgIdr6EPbEDCRYY5PEzQCXYJG6QmKh1qc/0742eUUI2vkREU08wwG2B9dg==}
+  '@mtcute/node@0.19.0':
+    resolution: {integrity: sha512-ApesFcMmV9hBgpwtx3zNUoRfk2BhvMv0lLXxbwOdv1kKACXb5p05zvQZpyw/ijuByRmjoFzx7VVnsK8GMsd0Tw==}
 
-  '@mtcute/test@0.16.5':
-    resolution: {integrity: sha512-keFVcp9RxCNmP+0OKkaCbNlSCIj3epM0aj7pNBgfUZ0a+/0nDxNnksM5ViClI4dnfy0sTJx6jgfO4LacVUmvlw==}
+  '@mtcute/test@0.19.0':
+    resolution: {integrity: sha512-gXVTUa0kl/T/UzAA2yl5Pd4mpSz+AyQguHHqerBmRXDbptppe2q5Hg/JXkhMmXnVgyXdyJzZS0bxFlo67VaPtg==}
     peerDependencies:
-      '@mtcute/core': ^0.16.4
-      '@mtcute/node': ^0.16.3
-      '@mtcute/tl': '*'
-      '@mtcute/web': ^0.16.2
-      vitest: ^1.4.0
+      '@mtcute/core': ^0.19.0
+      '@mtcute/node': ^0.19.0
+      '@mtcute/tl': 195.0.0
+      '@mtcute/web': ^0.19.0
+      vitest: '*'
     peerDependenciesMeta:
       '@mtcute/node':
         optional: true
       '@mtcute/web':
         optional: true
 
-  '@mtcute/tl-runtime@0.16.0':
-    resolution: {integrity: sha512-9HSYbP+ANL6pQmpST4rr+qHg2po2zzhJA/V2+/OLdMlssQRYk5P7xvL7iskwBc0Z5gCVkrIZ57NWTOLNicKLnw==}
+  '@mtcute/tl-runtime@0.19.0':
+    resolution: {integrity: sha512-5nqzQexx4/at+lWnd8G5zCsuI7k+vw/cr3IecRaZ+cOyNKLYQX9zqK2n6Lx+A9K1/M9L33YSAVPSPQnC+q0QjQ==}
 
-  '@mtcute/tl@185.1.0':
-    resolution: {integrity: sha512-P72BmkKwsDqhlZ86sEZ5TkZhbrw1pAuO8xrLAVQgoH7ywsqFsmtVXXkUD/otHNEnLT8OxOnY/vECdVRKTB+JYQ==}
+  '@mtcute/tl@195.0.0':
+    resolution: {integrity: sha512-GCZuWzq2AKD5nJ3ix6xe4unz1tnERq1bIFGCJEwOr0Nqp+6fJPM+rOYvxrLSyCYhCZsgyW/bGZlz2OTUy+AEKA==}
 
-  '@mtcute/wasm@0.16.0':
-    resolution: {integrity: sha512-JKHVzYRIjc2p71L2EFz2DOnpJY4wZ3/4XLRLt7S59lcxRn7+aWGpVED1UF7kq87VmokbuY9y0poXD5RqE6FfVQ==}
+  '@mtcute/wasm@0.19.0':
+    resolution: {integrity: sha512-QvSCjNR3/Y4knRMfccNXAdPUCgnQfjmOD/LGGHgQq/5/7SfA7f4/wk7G/TdlnBPArqk58EvyrC5qeKEy81y9Xw==}
 
   '@rollup/rollup-android-arm-eabi@4.6.1':
     resolution: {integrity: sha512-0WQ0ouLejaUCRsL93GD4uft3rOmB8qoQMU05Kb8CmMtMBe7XUDLAltxVZI1q6byNqEtU7N1ZX1Vw5lIpgulLQA==}
@@ -484,8 +493,8 @@ packages:
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
-  better-sqlite3@9.5.0:
-    resolution: {integrity: sha512-01qVcM4gPNwE+PX7ARNiHINwzVuD6nx0gdldaAAcu+MrzyIAukQ31ZDKEpzRO/CNA9sHpxoTZ8rdjoyAin4dyg==}
+  better-sqlite3@11.3.0:
+    resolution: {integrity: sha512-iHt9j8NPYF3oKCNOO5ZI4JwThjt3Z6J6XrcwG85VNMVzv1ByqrHWv5VILEbCMFWDsoHhXvQ7oC8vgRXFAKgl9w==}
 
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
@@ -1106,6 +1115,21 @@ snapshots:
   '@esbuild/win32-x64@0.21.5':
     optional: true
 
+  '@fuman/io@0.0.4':
+    dependencies:
+      '@fuman/utils': 0.0.4
+
+  '@fuman/net@0.0.4':
+    dependencies:
+      '@fuman/io': 0.0.4
+      '@fuman/utils': 0.0.4
+
+  '@fuman/node@0.0.4':
+    dependencies:
+      '@fuman/io': 0.0.4
+      '@fuman/net': 0.0.4
+      '@fuman/utils': 0.0.4
+
   '@fuman/utils@0.0.4': {}
 
   '@jest/schemas@29.6.3':
@@ -1114,67 +1138,78 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.4.15': {}
 
-  '@mtcute/core@0.16.4':
+  '@mtcute/core@0.19.0':
     dependencies:
-      '@mtcute/file-id': 0.16.0
-      '@mtcute/tl': 185.1.0
-      '@mtcute/tl-runtime': 0.16.0
+      '@fuman/io': 0.0.4
+      '@fuman/net': 0.0.4
+      '@fuman/utils': 0.0.4
+      '@mtcute/file-id': 0.19.0
+      '@mtcute/tl': 195.0.0
+      '@mtcute/tl-runtime': 0.19.0
       '@types/events': 3.0.0
       events: 3.2.0
       long: 5.2.3
 
-  '@mtcute/crypto-node@0.16.2':
+  '@mtcute/crypto-node@0.19.0':
     dependencies:
-      '@mtcute/node': 0.16.3
+      '@mtcute/node': 0.19.0
       node-gyp-build: 4.8.1
 
-  '@mtcute/dispatcher@0.16.0':
+  '@mtcute/dispatcher@0.19.0':
     dependencies:
-      '@mtcute/core': 0.16.4
+      '@fuman/utils': 0.0.4
+      '@mtcute/core': 0.19.0
       events: 3.2.0
 
-  '@mtcute/file-id@0.16.0':
+  '@mtcute/file-id@0.19.0':
     dependencies:
-      '@mtcute/tl-runtime': 0.16.0
+      '@fuman/utils': 0.0.4
+      '@mtcute/tl-runtime': 0.19.0
       long: 5.2.3
 
-  '@mtcute/html-parser@0.16.0':
+  '@mtcute/html-parser@0.19.0':
     dependencies:
-      '@mtcute/core': 0.16.4
+      '@mtcute/core': 0.19.0
       htmlparser2: 6.1.0
       long: 5.2.3
 
-  '@mtcute/markdown-parser@0.16.3':
+  '@mtcute/markdown-parser@0.19.0':
     dependencies:
-      '@mtcute/core': 0.16.4
+      '@mtcute/core': 0.19.0
       long: 5.2.3
 
-  '@mtcute/node@0.16.3':
+  '@mtcute/node@0.19.0':
     dependencies:
-      '@mtcute/core': 0.16.4
-      '@mtcute/html-parser': 0.16.0
-      '@mtcute/markdown-parser': 0.16.3
-      '@mtcute/wasm': 0.16.0
-      better-sqlite3: 9.5.0
+      '@fuman/net': 0.0.4
+      '@fuman/node': 0.0.4
+      '@fuman/utils': 0.0.4
+      '@mtcute/core': 0.19.0
+      '@mtcute/html-parser': 0.19.0
+      '@mtcute/markdown-parser': 0.19.0
+      '@mtcute/wasm': 0.19.0
+      better-sqlite3: 11.3.0
 
-  '@mtcute/test@0.16.5(@mtcute/core@0.16.4)(@mtcute/node@0.16.3)(@mtcute/tl@185.1.0)(vitest@1.4.0(@types/node@20.10.2))':
+  '@mtcute/test@0.19.0(@mtcute/core@0.19.0)(@mtcute/node@0.19.0)(@mtcute/tl@195.0.0)(vitest@1.4.0(@types/node@20.10.2))':
     dependencies:
-      '@mtcute/core': 0.16.4
-      '@mtcute/tl': 185.1.0
+      '@fuman/net': 0.0.4
+      '@fuman/utils': 0.0.4
+      '@mtcute/core': 0.19.0
+      '@mtcute/tl': 195.0.0
       long: 5.2.3
       vitest: 1.4.0(@types/node@20.10.2)
     optionalDependencies:
-      '@mtcute/node': 0.16.3
+      '@mtcute/node': 0.19.0
 
-  '@mtcute/tl-runtime@0.16.0':
+  '@mtcute/tl-runtime@0.19.0':
+    dependencies:
+      '@fuman/utils': 0.0.4
+      long: 5.2.3
+
+  '@mtcute/tl@195.0.0':
     dependencies:
       long: 5.2.3
 
-  '@mtcute/tl@185.1.0':
-    dependencies:
-      long: 5.2.3
-
-  '@mtcute/wasm@0.16.0': {}
+  '@mtcute/wasm@0.19.0': {}
 
   '@rollup/rollup-android-arm-eabi@4.6.1':
     optional: true
@@ -1261,7 +1296,7 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  better-sqlite3@9.5.0:
+  better-sqlite3@11.3.0:
     dependencies:
       bindings: 1.5.0
       prebuild-install: 7.1.1
