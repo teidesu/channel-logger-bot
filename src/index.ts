@@ -219,9 +219,5 @@ dp.onNewMessage(filters.chatId(connectedChatIds), async (msg) => {
 dp.extend(captchaDp)
 dp.extend(adminDp)
 
-tg.run(
-    { botToken: config.botToken },
-    async (user) => {
-        console.log('Logged in as', user.username)
-    },
-)
+const user = await tg.start({ botToken: config.botToken })
+console.log('Logged in as', user.username)
