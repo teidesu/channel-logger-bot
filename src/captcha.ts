@@ -12,7 +12,6 @@ const fonts = [
     'Bell',
     'Big',
     'Broadway KB',
-    'Calvin S',
     'Chunky',
     'Computer',
     'DiamFont',
@@ -88,6 +87,10 @@ async function onCaptchaTimeout(client: TelegramClient, key: string) {
     await client.banChatMember({
         chatId: state.chat,
         participantId: state.user
+    })
+
+    setTimeout(() => {
+        client.deleteMessagesById(state.chat, [state.msgId]).catch(console.error)
     })
 }
 
